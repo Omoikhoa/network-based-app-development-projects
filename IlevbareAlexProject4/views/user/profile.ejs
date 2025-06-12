@@ -1,0 +1,38 @@
+<%- include('../partials/header.ejs') %>  
+<main>
+    <h1>My Listings</h1>
+    <div class="listings-container">
+        <div class="manga-table">
+            <% if(mangas.length) { %>
+                <div class="table-header">
+                    <div class="table-column item-column">Item</div>
+                    <div class="table-column status-column">Status</div>
+                    <div class="table-column action-column">Action</div>
+                </div>
+                <% mangas.forEach(manga => { %>
+                    <div class="table-row">
+                        <div class="table-column item-column">
+                            <a href="/mangas/<%= manga.id %>"><%= manga.title %></a>
+                        </div>
+                        <div class="table-column status-column">
+                            <p><%= manga.active ? 'Active' : 'Not Active' %></p>
+                        </div>
+                        <div class="table-column action-column">
+                            <form>
+                                <button type="submit" class="button edit-button" formmethod="GET" formaction="/mangas/<%= manga.id %>/edit">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button type="submit" class="button delete-button" formmethod="POST" formaction="/mangas/<%= manga.id %>?_method=DELETE">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p>You have not created any mangas.</p>
+            <% } %>
+        </div>
+    </div>
+</main>
+<%- include('../partials/footer.ejs') %>

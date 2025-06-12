@@ -1,0 +1,36 @@
+<%- include('../partials/header.ejs')%>
+    <main>
+        <div class="main-content">
+            <div class="text-content">
+                <h1>Edit Your Listing</h1>
+                <p>Fill out the form with your changes. Upload an image of the item, and then click "Submit" to upload your changes.</p>
+            </div>
+            <div class="form-content">
+                <form method="POST" action = "/mangas/<%= manga.id%>?_method=PUT" enctype="multipart/form-data" class="new-item-form">
+                    <label for="condition">Condition:</label>
+                    <select id="condition" name="condition" value = "<%= manga.condition%>" required>
+                        <option value="New">New</option>
+                        <option value="Like New">Like New</option>
+                        <option value="Good">Good</option>
+                        <option value="Fair">Fair</option>
+                        <option value="Poor">Poor</option>
+                    </select>
+    
+                    <label for="title">Title:</label>
+                    <input type="text" id="title" name="title" value = "<%= manga.title%>" required>
+    
+                    <label for="price">Price:</label>
+                    <input type="number" id="price" name="price" min="0" step="0.01" value = "<%= manga.price%>" required>
+    
+                    <label for="details">Details:</label>
+                    <textarea id="details" name="details" rows="4" required><%= manga.details%></textarea>
+    
+                    <label for="image">Image:</label>
+                    <input type="file" id="image" name="image" value = "<%= manga.image%>">
+    
+                    <input type="submit" class="submit-button" value="Submit">
+                </form>
+            </div>
+        </div>
+    </main>
+    <%- include('../partials/footer.ejs')%>

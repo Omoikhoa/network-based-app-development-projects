@@ -1,0 +1,27 @@
+<%- include('../partials/header.ejs')%>
+    <main class="main-container signup-container">
+        <div class="form-wrapper">
+            <div class="form-title">
+                <h1>Sign Up</h1>
+                <p>Create an account to access the manga library.</p>
+            </div>
+        </div>
+        <div class="form-reform">
+            <form action = '/users' method = 'POST' class="">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" >
+                
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" >
+               
+                <label for="email">Email Address</label>
+                <input type="email" id="email" name="email">
+                
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" minlength="8" maxlength="64">
+    
+                <input type="submit" value="Sign Up">      
+            </form>
+        </div>
+    </main>
+    <%- include('../partials/footer.ejs')%>

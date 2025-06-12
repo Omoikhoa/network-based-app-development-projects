@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style.css">
+    <title>New Student</title>
+</head>
+<body>
+    <h2>Add a New Student</h2>
+    <form action="/students/list" method="POST" enctype="multipart/form-data">
+        <input type="text" id="name" name="name" placeholder="Name">
+        <input type="text" id="major" name="major" placeholder="Major">
+        <input type="number" id="gpa" name="gpa" step="any" placeholder="GPA">
+        <input type="file" id="image" name="image">
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

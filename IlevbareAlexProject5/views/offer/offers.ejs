@@ -1,0 +1,24 @@
+<%- include('../partials/header.ejs') %>
+<main>
+    <% if (offers.length > 0) { %>
+        <h1>Offers for <%= offers[0].item.title %></h1>
+        <div class="offers-container">
+            <% offers.forEach(offer => { %>
+                <div class="offer">
+                    <p><strong>Buyer:</strong> <%= offer.user.firstName + ' ' + offer.user.lastName %></p>
+                    <p><strong>Amount:</strong> $<%= offer.amount %></p>
+                    <% if (offer.item.active && offer.status === 'pending') { %>
+                        <form action="/mangas/<%= offer.item._id %>/offers/<%= offer._id %>?_method=PUT" method="POST">
+                            <button type="submit" class="button accept-button">Accept Offer</button>
+                        </form>
+                    <% } else { %>
+                        <p><strong>Status:</strong> <%= offer.status %></p>
+                    <% } %>
+                </div>
+            <% }) %>
+        </div>
+    <% } else { %>
+        <p class="no-items">No offers found for this item.</p>
+    <% } %>
+</main>
+<%- include('../partials/footer.ejs') %>

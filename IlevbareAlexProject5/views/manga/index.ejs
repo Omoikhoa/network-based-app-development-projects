@@ -1,0 +1,30 @@
+<%- include('../partials/header.ejs') %>
+<main>
+    <h1>Manga Collection</h1>
+    <div class="items-container">
+        <% 
+            const activeMangas = mangas.filter(manga => manga.active); 
+            if (activeMangas.length) {
+                activeMangas.sort((a, b) => a.price - b.price); 
+        %>
+                <% activeMangas.forEach(manga => { %>
+                    <div class="items">
+                        <a href="/mangas/<%= manga.id %>">
+                            <img src="<%= manga.image %>" alt="Item Detail">
+                        </a>
+                        <a href="/mangas/<%= manga.id %>">
+                            <h2><%= manga.title %></h2>
+                        </a>
+                        <p><strong>Price:</strong> $<%= manga.price %></p>
+                        <p><strong>Condition:</strong> <%= manga.condition %></p>
+                        <p><strong>Total Offers:</strong> <%= manga.totalOffers %></p>
+                    </div>
+                <% }) %>
+        <% } else { %>
+            <div class="no-items">
+                <p>There are no active mangas to display.</p>
+            </div>
+        <% } %>
+    </div>
+</main>
+<%- include('../partials/footer.ejs') %>

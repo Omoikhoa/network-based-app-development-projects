@@ -1,0 +1,23 @@
+<%- include('../partials/header.ejs')%>
+    <main>
+        <div class="item-details">
+            <div class="item-image">
+                <img src="<%= manga.image%>" alt="Item Detail">
+            </div>
+            <div class="item-info">
+                <h1><%= manga.title%></h1>
+                <p><strong>Condition:</strong> <%= manga.condition%></p>
+                <p><strong>Price:</strong> $<%= manga.price%></p>
+                <p><strong>Total Offers:</strong> 0</p>
+                <p><strong>Seller:</strong> <%= manga.seller%></p>
+                <p><strong>Description:</strong> <%= manga.details%></p>
+                <div class="item-buttons">
+                    <form>
+                        <button type="submit" class="button edit-button" formmethod="GET" formaction="/mangas/<%= manga.id%>/edit">Edit</button>
+                        <button type="submit" class="button delete-button" formmethod="POST" formaction="/mangas/<%= manga.id%>?_method=DELETE">Delete</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </main>
+    <%- include('../partials/footer.ejs')%>

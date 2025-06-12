@@ -1,0 +1,36 @@
+<%- include('../partials/header.ejs')%>
+    <main>
+        <div class="main-content">
+            <div class="text-content">
+                <h1>Sell At Manga Collectors</h1>
+                <p>Fill out the form with details. Upload an image of the item, and then click "Submit" to upload your listing.</p>
+            </div>
+            <div class="form-content">
+                <form action="/mangas" method="POST" enctype="multipart/form-data" class="new-item-form">
+                    <label for="condition">Condition:
+                        <select id="condition" name="condition" required>
+                            <option value="" disabled selected>Select condition</option>
+                            <option value="New">New</option>
+                            <option value="Like New">Like New</option>
+                            <option value="Good">Good</option>
+                            <option value="Fair">Fair</option>
+                            <option value="Poor">Poor</option>
+                        </select>
+                    </label>
+    
+                    <label for="title">Title: <input type="text" id="title" name="title" required></label>
+    
+                    <label for="seller">Seller: <input type="text" id="seller" name="seller" required></label>
+    
+                    <label for="price">Price:<input type="number" id="price" name="price" min="0" step="0.01" required></label>
+    
+                    <label for="details">Details: <textarea id="details" name="details" rows="4" required></textarea></label>
+    
+                    <label for="image">Image:<input type="file" id="image" name="image" required></label>
+    
+                    <input type="submit" class="submit-button" value="Submit">
+                </form>
+            </div>
+        </div>
+    </main>
+    <%- include('../partials/footer.ejs')%>

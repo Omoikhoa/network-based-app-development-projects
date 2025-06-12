@@ -1,0 +1,55 @@
+<%- include('../partials/header.ejs') %>
+<main>
+    <h1>My Listings</h1>
+    <div class="listings-container">
+        <div class="manga-table">
+            <% if(mangas.length) { %>
+                <div class="table-header">
+                    <div class="table-column item-column">Item</div>
+                    <div class="table-column status-column">Status</div>
+                    <div class="table-column action-column">Action</div>
+                </div>
+                <% mangas.forEach(manga => { %>
+                    <div class="table-row">
+                        <div class="table-column item-column">
+                            <a href="/mangas/<%= manga.id %>"><%= manga.title %></a>
+                        </div>
+                        <div class="table-column status-column">
+                            <p><%= manga.active ? 'Active' : 'Not Active' %></p>
+                        </div>
+                        <div class="table-column action-column">
+                            <form>
+                                <button type="submit" class="button edit-button" formmethod="GET" formaction="/mangas/<%= manga.id %>/edit">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                                <button type="submit" class="button delete-button" formmethod="POST" formaction="/mangas/<%= manga.id %>?_method=DELETE">
+                                    <i class="fas fa-trash-alt"></i>
+                                </button>
+                                <button type="submit" class="button view-offers-button" formmethod="GET" formaction="/mangas/<%= manga.id %>/offers" <%= manga.totalOffers === 0 ? 'disabled' : '' %>>
+                                    View Offers
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                <% }); %>
+            <% } else { %>
+                <p class="no-items">You have not created any mangas.</p>
+            <% } %>
+        </div>
+    </div>
+    <h1>My Offers</h1>
+    <% if (offers.length) { %>
+        <div class="offers-container">
+            <% offers.forEach(offer => { %>
+                <div class="offer">
+                    <p><strong>Item:</strong> <a href="/mangas/<%= offer.item._id %>"><%= offer.item.title %></a></p>
+                    <p><strong>Amount:</strong> $<%= offer.amount %></p>
+                    <p><strong>Status:</strong> <%= offer.status %></p>
+                </div>
+            <% }) %>
+        </div>
+    <% } else { %>
+        <p class="no-items">You have not created any offers.</p>
+    <% } %>
+</main>
+<%- include('../partials/footer.ejs') %>

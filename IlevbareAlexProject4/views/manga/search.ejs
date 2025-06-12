@@ -1,0 +1,19 @@
+<%- include('../partials/header.ejs')%>
+    <main>
+        <h1>Search Results</h1>
+        <div class="manga-list">
+            <% if (mangas.length > 0) { %>
+                <% mangas.forEach(manga => { %>
+                    <div class="manga-item">
+                        <a href="/mangas/<%= manga.id %>">
+                            <img src="<%= manga.image %>" alt="<%= manga.title %>">
+                            <div class="manga-title"><%= manga.title %></div>
+                        </a>
+                    </div>
+                <% }) %>
+            <% } else { %>
+                <p class="no-results">There is no item that matches your search criteria.</p>
+            <% } %>
+        </div>
+    </main>
+    <%- include('../partials/footer.ejs')%>
